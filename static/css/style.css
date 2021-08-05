@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto+Slab&display=swap");
+body {
+  margin: auto;
+  max-width: 1300px;
+}
+
+body {
+  font-family: "Roboto Slab", serif;
+  color: #363940;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Amatic SC", cursive;
+  color: #363940;
+}
+
+.dog-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 2em;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  font-family: "Amatic SC", cursive;
+  font-weight: bold;
+}
+.dog-modal main {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  display: grid;
+  grid-template-areas: "name" "pic" "props" "times" "back";
+}
+.dog-modal main h1 {
+  grid-area: name;
+  text-align: center;
+  font-size: 2em;
+}
+.dog-modal main img {
+  grid-area: pic;
+  width: 100%;
+  height: 100%;
+}
+.dog-modal main h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.dog-modal main ul {
+  grid-area: props;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+}
+.dog-modal main ul li {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+.dog-modal main ul li .info-type {
+  text-align: left;
+}
+.dog-modal main ul li .info {
+  text-align: right;
+}
+.dog-modal main aside {
+  grid-area: times;
+}
+.dog-modal main aside section {
+  display: grid;
+  grid-template-areas: "day time";
+  grid-template-columns: 30% 70%;
+}
+.dog-modal main aside section h4 {
+  grid-area: day;
+}
+.dog-modal main aside section span {
+  grid-area: time;
+  font-family: "Amatic SC", cursive;
+  text-align: right;
+}
+.dog-modal main button {
+  grid-area: back;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-family: "Amatic SC", cursive;
+  background-color: white;
+  font-size: 3em;
+  cursor: pointer;
+}
+
+.dog-item {
+  border: 1px solid black;
+  border-radius: 3px;
+  display: grid;
+  grid-template-areas: "dogpic ." "dogpic dogname" "dogpic .";
+  grid-template-rows: 30% 40% 30%;
+  grid-template-columns: 30% 70%;
+  height: 100px;
+  width: 300px;
+  margin: auto;
+  font-family: "Amatic SC", cursive;
+  font-weight: bold;
+  cursor: pointer;
+}
+.dog-item img {
+  grid-area: dogpic;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+.dog-item h3 {
+  grid-area: dogname;
+  font-size: 2em;
+  margin: 0;
+  text-align: center;
+}
+
+#dog-list h2 {
+  font-size: 2em;
+  text-align: center;
+  padding-bottom: 0.5em;
+}
+
+/*# sourceMappingURL=style.css.map */

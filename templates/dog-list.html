@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main_content %}
+<div id="dog-list">
+    <h2>Honden van Kanaleneiland</h2>
+</div>
+{% for dog in dogs %}
+{% with index=loop.index %}
+{% include 'partials/dog.html' %}
+{% endwith %}
+{% endfor %}
+{% endblock %}
