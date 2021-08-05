@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block main_content %}
+<section id="status-table">
+    <table>
+        <thead>
+            <tr>
+                <th class="time-cell">Tijd</th>
+                <th class="dogs-cell">Honden</th>
+                <th class="weather-cell">Weer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for h_data in next_five %}
+            <tr>
+                <td class="time-cell">{{h_data.time_fmt}}</td>
+                <td class="dogs-cell">
+                    <ul>
+                        {% if h_data.dogs %}
+                        {% for d in h_data.dogs %}
+                        <li>{{d.dog_name}} en {{d.owner_name}}</li>
+                        {% endfor %}
+                        {% else %}
+                        <li>Geen honden aanwezig</li>
+                        {% endif %}
+                    </ul>
+                </td>
+                <td class="weather-cell">
+                    <ul>
+                        <li>{{h_data.forecast.temp_c}} <span class="iconify"
+                                data-icon="tabler:temperature-celsius"></span></li>
+                        <li>{{h_data.forecast.precip_mm}}mm <span class="iconify"
+                                data-icon="fluent:weather-rain-24-regular"></span></li>
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

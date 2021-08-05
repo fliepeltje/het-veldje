@@ -1,12 +1,12 @@
 <section class="dog-item" data-target="{{index}}">
-    <img src="/static/img/{{dog.picture}}">
+    <img src="{{dog.picture}}">
     <h3>{{ dog.dog_name }}</h3>
 </section>
 
 <section class="dog-modal" id="dog-modal-{{index}}">
     <main>
         <h1>{{dog.dog_name}}</h1>
-        <img class="dog-pic" src="/static/img/{{dog.picture}}">
+        <img class="dog-pic" src="{{dog.picture}}">
         <ul>
             <li><span class="info-type">Baasje(s)</span> <span class="info">{{dog.owner_name }}</span></li>
             <li><span class="info-type">Merk</span> <span class="info">{{ dog.dog_type }}</span></li>

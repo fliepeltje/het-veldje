@@ -126,4 +126,31 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0.5em;
 }
 
+#status-table table {
+  width: 95%;
+  margin: auto;
+}
+#status-table table .time-cell {
+  width: 15%;
+  text-align: left;
+}
+#status-table table .dogs-cell {
+  width: 50%;
+  text-align: center;
+}
+#status-table table .dogs-cell ul {
+  text-align: center;
+  list-style: none;
+  font-size: 0.7em;
+}
+#status-table table .weather-cell {
+  width: 35%;
+  text-align: right;
+}
+#status-table table .weather-cell ul {
+  list-style: none;
+  font-size: 0.7em;
+  padding: 0;
+}
+
 /*# sourceMappingURL=style.css.map */
