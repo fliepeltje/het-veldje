@@ -46,7 +46,13 @@ class DogListCtx:
 
     @classmethod
     def construct(cls, dogs: list[Dog]) -> "DogListCtx":
-        return cls(dogs=[DogCtx.construct(i, d) for i, d in enumerate(dogs)])
+        res = []
+        for i, d in enumerate(dogs):
+            try:
+                res.append(DogCtx.construct(i, d))
+            except:
+                pass
+        return cls(dogs=res)
 
 
 @dataclass
