@@ -80,4 +80,10 @@ class Dog:
         token = f"Token {const.BASEROW_API_KEY}"
         with httpx.Client(headers={"Authorization": token}) as c:
             res = c.get(const.BASEROW_DOG_TABLE_URL).json()
-        return [cls.from_data(r) for r in res["results"]]
+        dogs = []
+        for row in res["results"]:
+            try:
+                dogs.append(cls.from_data(row))
+            except:
+                pass
+        return dogs
