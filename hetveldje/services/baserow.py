@@ -4,7 +4,6 @@ from datetime import date, datetime
 from hetveldje import constants as const
 from hetveldje.types import DayNumber, Gender
 from hetveldje.utils import hour_string_to_today_dt
-from typing import Optional
 
 
 @dataclass
@@ -30,20 +29,31 @@ class Dog:
                 raise ValueError
 
         return [
-            (key_to_day(key), [x.strip() for x in value.split(",")])
+            (
+                key_to_day(key),
+                sorted([x.strip() for x in value.split(",")]),
+            )
             for key, value in data.items()
         ]
 
-    def get_ranged_time(self, day_num: int, hour: int) -> Optional[datetime]:
-        times = [t for d, t in self.times if d == day_num]
+    def day_times(self, day_num: int) -> list[datetime]:
+        times = [x for d, x in self.times if d == day_num]
         if not times:
-            return None
-        time_list = [hour_string_to_today_dt(x) for x in times[0]]
+            return []
+        else:
+            return sorted([hour_string_to_today_dt(x) for x in times[0]])
+
+    @property
+    def today_times(self) -> list[datetime]:
+        return self.day_times(date.today().weekday())
+
+    def in_hour_range(self, hour: int) -> bool:
+        time_list = self.today_times
         in_range = [x for x in time_list if x.hour >= hour and x.hour < hour + 1]
         if not in_range:
-            return None
+            return False
         else:
-            return in_range[0]
+            return True
 
     @classmethod
     def from_data(cls, data: dict) -> "Dog":

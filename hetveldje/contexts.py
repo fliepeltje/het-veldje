@@ -3,7 +3,7 @@ from hetveldje.types import Gender, DayName
 from hetveldje.services.baserow import Dog
 from hetveldje.services.weather import Forecast
 from hetveldje.utils import get_day_name, get_dog_age
-from datetime import date, datetime
+from datetime import datetime
 
 
 @dataclass
@@ -20,6 +20,7 @@ class DogCtx:
 
     @classmethod
     def construct(cls, index: int, dog: Dog) -> "DogCtx":
+        fmt = lambda x: " | ".join([t.strftime("%H:%M") for t in x])
         age_delta = get_dog_age(dog.dob)
         return cls(
             index=index,
@@ -29,7 +30,9 @@ class DogCtx:
             owner_name=dog.owner_name,
             extra=dog.extra,
             type=dog.dog_type,
-            field_times=[(get_day_name(d), " | ".join(t)) for d, t in dog.times],
+            field_times=[
+                (get_day_name(d), fmt(dog.day_times(d))) for d, _ in dog.times
+            ],
             age=(str(age_delta.years), str(age_delta.months)),
         )
 
@@ -56,9 +59,7 @@ class HourStatCtx:
     def construct(
         cls, hour: int, dogs: list[Dog], forecasts: list[Forecast]
     ) -> "HourStatCtx":
-        today = date.today()
-        day_num = today.weekday()
-        filtered_dogs = [d for d in dogs if d.get_ranged_time(day_num, hour)]
+        filtered_dogs = [d for d in dogs if d.in_hour_range(hour)]
         present = [(d.dog_name, d.owner_name) for d in filtered_dogs]
         forecast = [x for x in forecasts if x.get_hour_forecast(hour)][0]
         hour_str = f"0{hour}:00" if hour < 10 else f"{hour}:00"

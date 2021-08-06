@@ -20,6 +20,10 @@
                 <span class="info-type">Geslacht</span>
                 <span class="info">{% if dog.gender == "M"%}Mannetje{% else%}Vrouwtje{% endif %}</span>
             </li>
+            <li>
+                <span class="info-type">Leeftijd</span>
+                <span class="info">{{ dog.age.0 }} jaar, {{ dog.age.1 }} maanden</span>
+            </li>
         </ul>
         <div class="dog-extra">
             {% for info in dog.extra %}

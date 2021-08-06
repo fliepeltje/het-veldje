@@ -6,6 +6,8 @@ from fastapi.templating import Jinja2Templates
 from hetveldje.services.baserow import Dog
 from hetveldje.services.weather import Forecast
 from hetveldje.contexts import LandingCtx, DogListCtx
+from hetveldje import constants as const
+from hetveldje import debug
 
 app = FastAPI()
 
@@ -17,7 +19,12 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/dogs", response_class=HTMLResponse)
 async def dog_list(request: Request):
-    dogs = Dog.get_all()
+    if const.DEBUG:
+        dogs = debug.generate_dogs()
+    else:
+        dogs = Dog.get_all()
+
+    dogs = sorted(dogs, key=lambda x: x.dog_name)
     return templates.TemplateResponse(
         "dog-list.html", {"request": request, "ctx": DogListCtx.construct(dogs)}
     )
@@ -25,8 +32,12 @@ async def dog_list(request: Request):
 
 @app.get("/", response_class=HTMLResponse)
 async def landing(request: Request):
-    forecasts = Forecast.get_today()
-    dogs = Dog.get_all()
+    if const.DEBUG:
+        forecasts = debug.generate_forecast()
+        dogs = debug.generate_dogs()
+    else:
+        forecasts = Forecast.get_today()
+        dogs = Dog.get_all()
     return templates.TemplateResponse(
         "landing.html",
         {

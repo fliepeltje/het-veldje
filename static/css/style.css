@@ -49,6 +49,7 @@ h1, h2, h3, h4, h5, h6 {
   grid-area: pic;
   margin: auto;
   max-height: 300px;
+  max-width: 300px;
 }
 .dog-modal main h4 {
   margin-top: 0;
@@ -121,17 +122,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto Slab", serif;
   font-weight: bold;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 .dog-item img {
   grid-area: dogpic;
   border-radius: 50%;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   object-fit: cover;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
 }
 .dog-item h3 {
   grid-area: dogname;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0;
   text-align: center;
 }

@@ -14,3 +14,4 @@ WEATHER_FORECAST_Q = "q=52.073938,5.086407&days=1&aqi=no&alerts=no"
 WEATHER_FORECAST_URL = (
     f"{WEATHER_FORECAST_BASE}?key={WEATHER_API_KEY}&{WEATHER_FORECAST_Q}"
 )
+DEBUG = os.environ.get("DEBUG", False)
