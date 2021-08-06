@@ -11,14 +11,29 @@
 </head>
 
 <body>
-    <!-- <nav>
+    <nav>
         <ol>
-            <li>Dogs</li>
-            <li>FAQ</li>
-            <li>Feed</li>
-            <li>Home</li>
+            <li>
+                <a href="/dogs">
+                    <span class="iconify-inline" data-icon="carbon:dog-walker"></span>
+                    <span class="nav-text">Honden</span>
+                </a>
+            </li>
+            <li>
+                <a href="/">
+                    <span class="iconify-inline" data-icon="el:guidedog"></span>
+                    <span class="nav-text">Veldje</span>
+                </a>
+            </li>
+            <li>
+                <a href="/faq">
+                    <span class="iconify-inline" data-icon="wpf:faq"></span>
+                    <span class="nav-text">FAQ</span>
+                </a>
+
+            </li>
         </ol>
-    </nav> -->
+    </nav>
     <main>
         {% block main_content %}
         {% endblock %}
