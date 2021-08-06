@@ -20,10 +20,8 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/honden", response_class=HTMLResponse)
 async def dog_list(request: Request):
-    if const.DEBUG:
-        dogs = debug.generate_dogs()
-    else:
-        dogs = Dog.get_all()
+
+    dogs = Dog.get_all()
 
     dogs = sorted(dogs, key=lambda x: x.dog_name)
     return templates.TemplateResponse(
@@ -41,12 +39,8 @@ async def faq(request: Request):
 
 @app.get("/", response_class=HTMLResponse)
 async def landing(request: Request):
-    if const.DEBUG:
-        forecasts = debug.generate_forecast()
-        dogs = debug.generate_dogs()
-    else:
-        forecasts = Forecast.get_today()
-        dogs = Dog.get_all()
+    forecasts = Forecast.get_today()
+    dogs = Dog.get_all()
     return templates.TemplateResponse(
         "landing.html",
         {

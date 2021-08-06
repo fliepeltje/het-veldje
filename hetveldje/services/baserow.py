@@ -39,7 +39,7 @@ class Dog:
         ]
 
     def day_times(self, day_num: int) -> list[datetime]:
-        times = [x for d, x in self.times if d == day_num]
+        times = [x for d, x in self.times if d == day_num and x]
         if not times:
             return []
         else:
