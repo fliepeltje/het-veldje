@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 {% block main_content %}
+<section id="register">
+    <p>
+        Ook je hond op deze site zichtbaar maken? Meld je hond aan en dan kunnen we zien wanneer
+        we naar het veldje moeten om jouw hond te zien. Klik op de knop en vul het formulier naar instructies in.
+    </p>
+    <form action="{{ctx.register_link}}">
+        <input type="submit" value="Hond Aanmelden" />
+    </form>
+</section>
 <section id="status-table">
+    <h3>Veldstatistieken</h3>
     <table>
         <thead>
             <tr>

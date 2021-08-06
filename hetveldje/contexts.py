@@ -4,6 +4,7 @@ from hetveldje.services.baserow import Dog
 from hetveldje.services.weather import Forecast
 from hetveldje.types import DayName, Gender
 from hetveldje.utils import current_dt, get_day_name, get_dog_age
+from hetveldje import constants as const
 
 
 @dataclass
@@ -76,6 +77,7 @@ class LandingCtx:
     """Renders to landing.html"""
 
     hour_stats: list[HourStatCtx]
+    register_link: str = const.BASEROW_FORM_URL
 
     @classmethod
     def construct(cls, dogs: list[Dog], forecasts: list[Forecast]) -> "LandingCtx":
