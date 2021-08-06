@@ -1,7 +1,8 @@
+import random
+from datetime import date, datetime
+
 from hetveldje.services.baserow import Dog
 from hetveldje.services.weather import Forecast
-from datetime import date, datetime
-import random
 
 
 def generate_times():

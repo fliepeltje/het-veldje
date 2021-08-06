@@ -1,7 +1,8 @@
 import os
-import markdown2
-import frontmatter
 from dataclasses import dataclass
+
+import frontmatter
+import markdown2
 
 
 @dataclass

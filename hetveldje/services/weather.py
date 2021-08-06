@@ -1,8 +1,10 @@
-import httpx
 from dataclasses import dataclass
 from datetime import datetime
-from hetveldje import constants as const
 from typing import Optional
+
+import httpx
+
+from hetveldje import constants as const
 
 
 @dataclass

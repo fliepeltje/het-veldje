@@ -3,12 +3,12 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from hetveldje.services.baserow import Dog
-from hetveldje.services.weather import Forecast
-from hetveldje.services.cms import FaqItem
-from hetveldje.contexts import LandingCtx, DogListCtx
 from hetveldje import constants as const
 from hetveldje import debug
+from hetveldje.contexts import DogListCtx, LandingCtx
+from hetveldje.services.baserow import Dog
+from hetveldje.services.cms import FaqItem
+from hetveldje.services.weather import Forecast
 
 app = FastAPI()
 

@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from hetveldje.types import Gender, DayName
+
 from hetveldje.services.baserow import Dog
 from hetveldje.services.weather import Forecast
-from hetveldje.utils import get_day_name, get_dog_age, current_dt
-from datetime import datetime
+from hetveldje.types import DayName, Gender
+from hetveldje.utils import current_dt, get_day_name, get_dog_age
 
 
 @dataclass

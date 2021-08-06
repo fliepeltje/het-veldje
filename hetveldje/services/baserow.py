@@ -1,6 +1,8 @@
-import httpx
 from dataclasses import dataclass
 from datetime import date, datetime
+
+import httpx
+
 from hetveldje import constants as const
 from hetveldje.types import DayNumber, Gender
 from hetveldje.utils import hour_string_to_today_dt
