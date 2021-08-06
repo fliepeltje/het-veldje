@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from hetveldje.types import Gender, DayName
 from hetveldje.services.baserow import Dog
 from hetveldje.services.weather import Forecast
-from hetveldje.utils import get_day_name, get_dog_age
+from hetveldje.utils import get_day_name, get_dog_age, current_dt
 from datetime import datetime
 
 
@@ -79,8 +79,8 @@ class LandingCtx:
 
     @classmethod
     def construct(cls, dogs: list[Dog], forecasts: list[Forecast]) -> "LandingCtx":
-        now = datetime.now().hour
-        _range = range(now, now + 5)
+        now = current_dt().hour
+        _range = range(now, now + 10)
         hour_range = [x for x in _range if x < 24]
         return cls(
             hour_stats=[HourStatCtx.construct(h, dogs, forecasts) for h in hour_range]
