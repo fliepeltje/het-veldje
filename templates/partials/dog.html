@@ -1,32 +1,42 @@
-<section class="dog-item" data-target="{{index}}">
-    <img src="{{dog.picture}}">
-    <h3>{{ dog.dog_name }}</h3>
+<section class="dog-item" data-target="{{dog.index}}">
+    <img src="{{dog.picture_url}}">
+    <h3>{{ dog.name }}</h3>
 </section>
 
-<section class="dog-modal" id="dog-modal-{{index}}">
+<section class="dog-modal" id="dog-modal-{{dog.index}}">
     <main>
-        <h1>{{dog.dog_name}}</h1>
-        <img class="dog-pic" src="{{dog.picture}}">
+        <h1>{{dog.name}}</h1>
+        <img class="dog-pic" src="{{dog.picture_url}}">
         <ul>
-            <li><span class="info-type">Baasje(s)</span> <span class="info">{{dog.owner_name }}</span></li>
-            <li><span class="info-type">Merk</span> <span class="info">{{ dog.dog_type }}</span></li>
             <li>
-                <span class="info-type">Bijzonderheden</span>
-                <span class="info">
-                    {% for info in dog.extra %}
-                    - {{info}}<br />
-                    {% endfor %}
-                </span>
+                <span class="info-type">Baasje(s)</span>
+                <span class="info">{{dog.owner_name }}</span>
+            </li>
+            <li>
+                <span class="info-type">Merk</span>
+                <span class="info">{{ dog.type }}</span>
+            </li>
+            <li>
+                <span class="info-type">Geslacht</span>
+                <span class="info">{% if dog.gender == "M"%}Mannetje{% else%}Vrouwtje{% endif %}</span>
             </li>
         </ul>
+        <div class="dog-extra">
+            {% for info in dog.extra %}
+            <span class="info-block">
+                {{info}}
+            </span>
+            {% endfor %}
+        </div>
+
         <aside>
-            {% for day in dog.times %}
+            {% for day, times in dog.field_times %}
             <section>
-                <h4>{{ day.day_name }}</h4> <span class="field-times">{{day.times_str}}</span>
+                <h4>{{ day }}</h4> <span class="field-times">{{ times }}</span>
             </section>
             {% endfor %}
         </aside>
-        <button class="close-modal" data-target="{{index}}">Terug</button>
+        <button class="close-modal" data-target="{{ dog.index }}">Terug</button>
     </main>
 </section>
 <script src="/static/js/modal.js"></script>

@@ -10,14 +10,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for h_data in next_five %}
+            {% for h_data in ctx.hour_stats %}
             <tr>
-                <td class="time-cell">{{h_data.time_fmt}}</td>
+                <td class="time-cell">{{h_data.hour_str}}</td>
                 <td class="dogs-cell">
                     <ul>
-                        {% if h_data.dogs %}
-                        {% for d in h_data.dogs %}
-                        <li>{{d.dog_name}} en {{d.owner_name}}</li>
+                        {% if h_data.present_dogs %}
+                        {% for dog, owner in h_data.present_dogs %}
+                        <li>{{ dog }} en {{ owner }}</li>
                         {% endfor %}
                         {% else %}
                         <li>Geen honden aanwezig</li>
@@ -26,9 +26,8 @@
                 </td>
                 <td class="weather-cell">
                     <ul>
-                        <li>{{h_data.forecast.temp_c}} <span class="iconify"
-                                data-icon="tabler:temperature-celsius"></span></li>
-                        <li>{{h_data.forecast.precip_mm}}mm <span class="iconify"
+                        <li>{{h_data.temp_c}} <span class="iconify" data-icon="tabler:temperature-celsius"></span></li>
+                        <li>{{h_data.precip_mm}}mm <span class="iconify"
                                 data-icon="fluent:weather-rain-24-regular"></span></li>
                     </ul>
                 </td>

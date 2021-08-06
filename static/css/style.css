@@ -10,22 +10,24 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Amatic SC", cursive;
+  font-family: "Roboto Slab", serif;
   color: #363940;
 }
 
 .dog-modal {
   display: none;
-  position: fixed;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  padding-top: 2em;
-  left: 0;
-  top: 0;
+  padding-top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  font-family: "Amatic SC", cursive;
+  font-family: "Roboto Slab", serif;
   font-weight: bold;
+  max-width: 600px;
 }
 .dog-modal main {
   background-color: #fefefe;
@@ -34,17 +36,19 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #888;
   width: 80%;
   display: grid;
-  grid-template-areas: "name" "pic" "props" "times" "back";
+  grid-template-areas: "name" "pic" "props" "extra" "times" "back";
 }
 .dog-modal main h1 {
   grid-area: name;
   text-align: center;
   font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .dog-modal main img {
   grid-area: pic;
-  width: 100%;
-  height: 100%;
+  margin: auto;
+  max-height: 300px;
 }
 .dog-modal main h4 {
   margin-top: 0;
@@ -55,6 +59,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   list-style: none;
   padding: 0;
+  font-size: 0.7em;
 }
 .dog-modal main ul li {
   display: grid;
@@ -66,27 +71,38 @@ h1, h2, h3, h4, h5, h6 {
 .dog-modal main ul li .info {
   text-align: right;
 }
+.dog-modal main .dog-extra {
+  grid-area: extra;
+  font-size: 0.7em;
+  padding-bottom: 1em;
+}
+.dog-modal main .dog-extra .info-block {
+  display: block;
+  text-align: center;
+}
 .dog-modal main aside {
   grid-area: times;
+  padding-bottom: 1em;
 }
 .dog-modal main aside section {
   display: grid;
   grid-template-areas: "day time";
   grid-template-columns: 30% 70%;
+  font-size: 0.7em;
 }
 .dog-modal main aside section h4 {
   grid-area: day;
 }
 .dog-modal main aside section span {
   grid-area: time;
-  font-family: "Amatic SC", cursive;
+  font-family: "Roboto Slab", serif;
   text-align: right;
 }
 .dog-modal main button {
   grid-area: back;
   border: 1px solid black;
   border-radius: 3px;
-  font-family: "Amatic SC", cursive;
+  font-family: "Roboto Slab", serif;
   background-color: white;
   font-size: 3em;
   cursor: pointer;
@@ -102,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100px;
   width: 300px;
   margin: auto;
-  font-family: "Amatic SC", cursive;
+  font-family: "Roboto Slab", serif;
   font-weight: bold;
   cursor: pointer;
 }
@@ -131,20 +147,21 @@ h1, h2, h3, h4, h5, h6 {
   margin: auto;
 }
 #status-table table .time-cell {
-  width: 15%;
+  width: 20%;
   text-align: left;
 }
 #status-table table .dogs-cell {
-  width: 50%;
+  width: 60%;
   text-align: center;
 }
 #status-table table .dogs-cell ul {
   text-align: center;
   list-style: none;
   font-size: 0.7em;
+  padding: 0;
 }
 #status-table table .weather-cell {
-  width: 35%;
+  width: 20%;
   text-align: right;
 }
 #status-table table .weather-cell ul {

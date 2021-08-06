@@ -3,7 +3,9 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from hetveldje.types import Dog, HourForecast, HourData
+from hetveldje.services.baserow import Dog
+from hetveldje.services.weather import Forecast
+from hetveldje.contexts import LandingCtx, DogListCtx
 
 app = FastAPI()
 
@@ -15,19 +17,20 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/dogs", response_class=HTMLResponse)
 async def dog_list(request: Request):
+    dogs = Dog.get_all()
     return templates.TemplateResponse(
-        "dog-list.html", {"request": request, "dogs": Dog.from_api()}
+        "dog-list.html", {"request": request, "ctx": DogListCtx.construct(dogs)}
     )
 
 
 @app.get("/", response_class=HTMLResponse)
 async def landing(request: Request):
-    forecasts = HourForecast.from_api()
-    dogs = Dog.from_api()
+    forecasts = Forecast.get_today()
+    dogs = Dog.get_all()
     return templates.TemplateResponse(
         "landing.html",
         {
             "request": request,
-            "next_five": HourData.next_5(forecasts=forecasts, dogs=dogs),
+            "ctx": LandingCtx.construct(forecasts=forecasts, dogs=dogs),
         },
     )

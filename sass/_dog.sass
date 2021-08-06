@@ -1,16 +1,18 @@
 @use "fonts" as f
 .dog-modal
     display: none
-    position: fixed
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
     z-index: 1
-    padding-top: 2em
-    left: 0
-    top: 0
+    padding-top: 0
     width: 100%
     height: 100%
     overflow: auto
     font-family: f.$header-font
     font-weight: bold
+    max-width: 600px
 
     main
         background-color: #fefefe
@@ -19,17 +21,19 @@
         border: 1px solid #888
         width: 80%
         display: grid
-        grid-template-areas: "name" "pic" "props" "times" "back"
+        grid-template-areas: "name" "pic" "props" "extra" "times" "back"
 
         h1
             grid-area: name
             text-align: center
             font-size: 2em
+            margin-top: 0
+            margin-bottom: 0
 
         img
             grid-area: pic
-            width: 100%
-            height: 100%
+            margin: auto
+            max-height: 300px
 
         h4
             margin-top: 0
@@ -40,6 +44,7 @@
             text-align: center
             list-style: none
             padding: 0
+            font-size: 0.7em
             li
                 display: grid
                 grid-template-columns: 30% 70%
@@ -50,13 +55,23 @@
                 .info
                     text-align: right
 
+        .dog-extra
+            grid-area: extra
+            font-size: 0.7em
+            padding-bottom: 1em
+            .info-block
+                display: block
+                text-align: center
+
         aside
             grid-area: times
+            padding-bottom: 1em
 
             section
                 display: grid
                 grid-template-areas: "day time"
                 grid-template-columns: 30% 70%
+                font-size: 0.7em
 
                 h4
                     grid-area: day
