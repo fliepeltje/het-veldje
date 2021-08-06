@@ -207,4 +207,19 @@ nav {
   margin-bottom: 10px;
 }
 
+#faq details {
+  marging-bottom: 10px;
+}
+#faq details summary {
+  cursor: pointer;
+  padding: 2px;
+}
+#faq details summary:hover {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+#faq details p {
+  margin: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */

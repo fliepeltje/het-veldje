@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<section id="faq">
+    {% for item in ctx.faqitems %}
+    <details>
+        <summary>
+            {{item.question}}
+        </summary>
+        {{ item.html_content|safe }}
+    </details>
+    {% endfor %}
+</section>
+{% endblock %}
