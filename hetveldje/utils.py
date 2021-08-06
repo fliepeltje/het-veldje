@@ -31,6 +31,11 @@ def get_dog_age(dob: date) -> relativedelta:
 
 
 def hour_string_to_today_dt(hour_str: str) -> datetime:
-    h, _, m = hour_str.partition(":")
+    if ":" in hour_str:
+        h, _, m = hour_str.partition(":")
+    elif "." in hour_str:
+        h, _, m = hour_str.partition(".")
+    else:
+        raise ValueError("Invalid time separator")
     today = date.today()
     return datetime(today.year, today.month, today.day, int(h), int(m))
