@@ -30,20 +30,21 @@ class Dog:
             except IndexError:
                 raise ValueError
 
-        return [
+        parsed = [
             (
                 key_to_day(key),
                 sorted([x.strip() for x in value.split(",")]),
             )
             for key, value in data.items()
         ]
+        return [(d, v) for d, v in parsed if v]
 
     def day_times(self, day_num: int) -> list[datetime]:
-        times = [x for d, x in self.times if d == day_num and x]
+        times = [x for d, x in self.times if d == day_num]
         if not times:
             return []
         else:
-            return sorted([hour_string_to_today_dt(x) for x in times[0]])
+            return sorted([hour_string_to_today_dt(x) for x in times[0] if x])
 
     @property
     def today_times(self) -> list[datetime]:
