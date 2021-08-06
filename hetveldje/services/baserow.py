@@ -51,7 +51,10 @@ class Dog:
         return self.day_times(date.today().weekday())
 
     def in_hour_range(self, hour: int) -> bool:
-        time_list = self.today_times
+        try:
+            time_list = self.today_times
+        except:
+            return False
         in_range = [x for x in time_list if x.hour >= hour and x.hour < hour + 1]
         if not in_range:
             return False
